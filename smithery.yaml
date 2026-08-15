@@ -8,9 +8,9 @@ description: >-
   基于 shiwuyan 图片接口封装的 MCP 服务，提供文生图（generate_image）与
   图生图（edit_image）能力，通过 npx 一键启动，无需下载代码或写路径。
 authors:
-  - aaa147258qq
-homepage: https://github.com/aaa147258qq/image-gen-mcp
-repository: https://github.com/aaa147258qq/image-gen-mcp
+  - YQT-api
+homepage: https://github.com/YQT-api/image-gen-mcp
+repository: https://github.com/YQT-api/image-gen-mcp
 license: MIT
 # 运行环境：使用 npx 拉取已发布的 npm 包
 runtime: node

@@ -15,12 +15,12 @@
 ```bash
 # 在 GitHub 网页新建仓库 image-gen-mcp（公开），然后本地：
 cd image-gen-mcp
-git remote add origin https://github.com/aaa147258qq/image-gen-mcp.git
+git remote add origin https://github.com/YQT-api/image-gen-mcp.git
 git branch -M main
 git push -u origin main
 ```
 
-推送后，仓库里应有：`src/`、`dist/`、`bin/`、`package.json`、`README.md`、`smithery.yaml`、`glama.json`、`server.json`、`.gitignore`。
+推送后，仓库里应有：`src/`、`bin/`、`package.json`、`README.md`、`smithery.yaml`、`glama.json`、`server.json`、`.gitignore`。（`dist/` 由 npm 安装时生成，已通过 `.gitignore` 排除，无需入库。）
 
 ---
 
@@ -28,7 +28,7 @@ git push -u origin main
 
 **方式 A — 网页（最简单）**
 1. 登录 https://smithery.ai → **Publish MCP**
-2. 选 "From GitHub repository"，填 `aaa147258qq/image-gen-mcp`
+2. 选 "From GitHub repository"，填 `YQT-api/image-gen-mcp`
 3. 填表：
    - Name：`image-gen-mcp`
    - Description：`基于 shiwuyan 图片接口封装的 MCP 服务，提供文生图与图生图工具，通过 npx 一键启动`
@@ -59,7 +59,7 @@ npx @smithery/cli publish --name @aaa147258qq/image-gen-mcp --transport stdio
 ```bash
 brew install mcp-publisher        # 或 npm i -g mcp-publisher
 mcp-publisher init                # 会读取本目录 server.json 草稿
-mcp-publisher login github        # 用 GitHub 登录，证明 io.github.aaa147258qq 命名空间归属
+mcp-publisher login github        # 用 GitHub 登录，证明 io.github.YQT-api 命名空间归属
 mcp-publisher publish
 ```
 
@@ -70,7 +70,7 @@ mcp-publisher publish
 
 ## 平台四：MCPFind（纯发现，分类浏览）
 
-打开 https://mcpfind.org → Submit → 填仓库地址 `aaa147258qq/image-gen-mcp` 与简介即可。
+打开 https://mcpfind.org → Submit → 填仓库地址 `YQT-api/image-gen-mcp` 与简介即可。
 
 ---
 
