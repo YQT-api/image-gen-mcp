@@ -48,7 +48,7 @@ Cursor 等任意 MCP 客户端都能直接「生成图片」。
 | `prompt` | string | 编辑要求（必填），如「改成白底产品图，真实摄影」 |
 | `image_path` | string | 本地参考图路径（必填），如 `./ref.png` |
 | `mask_path` | string | 可选局部遮罩图路径 |
-| `model` | string | 默认 `gpt-image-2-code`；可选 `gpt-image-2-code` / `gpt-image-2-code2` / `gpt-image-2-code3`（**已移除易超时的 adobe 系模型**） |
+| `model` | string | 默认 `gpt-image-2-code`；可选 `gpt-image-2-code` / `gpt-image-2-code2` / `gpt-image-2-code3` |
 | `n` / `size` / `quality` / `background` / `output_format` / `output_compression` / `upscale` / `output_path` | — | 同文生图 |
 
 返回：编辑后的图片本身（base64 PNG，客户端直接渲染）。
