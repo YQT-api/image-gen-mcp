@@ -170,7 +170,7 @@ WorkBuddy 会自动调用 `generate_image` 工具，把图片渲染在对话里�
 
 | 参数 | 可选值 | 默认 |
 | --- | --- | --- |
-| `model` | gpt-image-2 / gpt-image-2-code / gpt-image-2-code2 / gpt-image-2-code3 / gpt-image-2-adobe-code | gpt-image-2-code |
+| `model` | gpt-image-2 / gpt-image-2-code / gpt-image-2-code2 / gpt-image-2-code3 | gpt-image-2-code |
 | `n` | 1 / 2 / 3 / 4 | 1 |
 | `size` | 1:1 / 16:9 / 9:16 / 1024x1024 / 1024x1792 / 1792x1024 | 1:1 |
 | `quality` | low / medium / high | （不填） |

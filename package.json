@@ -1,6 +1,6 @@
 {
   "name": "@aaa147258qq/image-gen-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server that wraps a remote OpenAI-compatible image-generation API (/v1/images/generations and /v1/images/edits). Run with `npx -y @aaa147258qq/image-gen-mcp`.",
   "type": "module",
   "bin": {

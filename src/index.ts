@@ -55,7 +55,7 @@ function needKey() {
   return null;
 }
 
-const IMG_MODELS = "gpt-image-2 / gpt-image-2-code / gpt-image-2-code2 / gpt-image-2-code3 / gpt-image-2-adobe-code";
+const IMG_MODELS = "gpt-image-2 / gpt-image-2-code / gpt-image-2-code2 / gpt-image-2-code3";
 const EDIT_MODELS = "gpt-image-2-code / gpt-image-2-code2 / gpt-image-2-code3";
 
 // ---------- 1. 列出可用模型 ----------

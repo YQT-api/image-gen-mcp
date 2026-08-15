@@ -30,7 +30,7 @@ Cursor 等任意 MCP 客户端都能直接「生成图片」。
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
 | `prompt` | string | 提示词（必填） |
-| `model` | string | 默认 `gpt-image-2-code`，可选 `gpt-image-2` / `gpt-image-2-code` / `gpt-image-2-code2` / `gpt-image-2-code3` / `gpt-image-2-adobe-code` |
+| `model` | string | 默认 `gpt-image-2-code`，可选 `gpt-image-2` / `gpt-image-2-code` / `gpt-image-2-code2` / `gpt-image-2-code3` |
 | `n` | int 1-4 | 张数，默认 1 |
 | `size` | string | `1:1` / `16:9` / `1024x1024` / `1024x1792` 等 |
 | `quality` | enum | `low` / `medium` / `high` |
@@ -50,7 +50,7 @@ Cursor 等任意 MCP 客户端都能直接「生成图片」。
 | `prompt` | string | 编辑要求（必填），如「改成白底产品图，真实摄影」 |
 | `image_path` | string | 本地参考图路径（必填），如 `./ref.png` |
 | `mask_path` | string | 可选局部遮罩图路径 |
-| `model` | string | 默认 `gpt-image-2-code`；可选 `gpt-image-2-code` / `gpt-image-2-code2` / `gpt-image-2-code3`（**已移除易超时的 `gpt-image-2-adobe-code`**） |
+| `model` | string | 默认 `gpt-image-2-code`；可选 `gpt-image-2-code` / `gpt-image-2-code2` / `gpt-image-2-code3`（**已移除易超时的 adobe 系模型**） |
 | `n` / `size` / `quality` / `background` / `output_format` / `output_compression` / `upscale` / `output_path` | — | 同文生图 |
 
 返回：编辑后的图片本身（base64 PNG，客户端直接渲染）。
@@ -61,9 +61,9 @@ Cursor 等任意 MCP 客户端都能直接「生成图片」。
 
 ## 三、实测结论（用测试 Key 跑过）
 
-- ✅ **文生图全部参数可用**：`model`(含 adobe/code)、`n`、`size`(比例与像素)、`quality`、`style`、`background`、`output_format`(jpeg/webp)、`output_compression`、`upscale=4k` 均返回 200 且出图。
+- ✅ **文生图全部参数可用**：`model`(含 code 系列)、`n`、`size`(比例与像素)、`quality`、`style`、`background`、`output_format`(jpeg/webp)、`output_compression`、`upscale=4k` 均返回 200 且出图。
 - ⚠️ **`response_format=url` 实际未生效**：该接口**始终返回 `b64_json`**，不返回 url。工具默认用 `b64_json` 直接渲染图片，无影响。
-- ✅ **图生图（/images/edits）**：`gpt-image-2-code` 编辑成功返回图片（已用测试 Key 端到端验证）。默认即 `gpt-image-2-code`，不再暴露易超时的 `gpt-image-2-adobe-code` 选项。
+- ✅ **图生图（/images/edits）**：`gpt-image-2-code` 编辑成功返回图片（已用测试 Key 端到端验证）。默认即 `gpt-image-2-code`，不再暴露易超时的 adobe 系模型选项。
 - ❌ **上游失败时统一提示**：任何来自官方接口的失败（限流、Key 失效、服务端异常等），用户端只看到「官方接口繁忙，生成失败」，不暴露内部报错。
 
 > 注意：图片生成单次约 10–60 秒（服务端渲染），调用时请耐心等待。
@@ -153,4 +153,4 @@ npm publish --access=public   # 已配 publishConfig.access=public，scoped 包�
 ## 七、变更记录
 
 - **v3.0.0**：移除视频相关能力（seedance `generate_video` / `query_video` / `upload_media`）。上游失败时统一对用户返回「官方接口繁忙，生成失败」。
-- **v3.1.0**：应需求把图生图（`edit_image`）加回，但**默认模型改为稳定的 `gpt-image-2-code`，不再提供易超时的 `gpt-image-2-adobe-code`**。现共 3 个工具：`list_models` / `generate_image` / `edit_image`。实测：文生图、图生图均正常出图，上游失败统一返回「官方接口繁忙，生成失败」。
+- **v3.1.0**：应需求把图生图（`edit_image`）加回，但**默认模型改为稳定的 `gpt-image-2-code`，不再提供易超时的 adobe 系模型**。现共 3 个工具：`list_models` / `generate_image` / `edit_image`。实测：文生图、图生图均正常出图，上游失败统一返回「官方接口繁忙，生成失败」。
