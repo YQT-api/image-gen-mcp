@@ -1,0 +1,24 @@
+{
+  "id": "io.github.aaa147258qq.image-gen-mcp",
+  "name": "image-gen-mcp",
+  "description": "基于 shiwuyan 图片接口封装的 MCP 服务，提供文生图（generate_image）与图生图（edit_image）能力，通过 npx 一键启动。",
+  "repository": {
+    "url": "https://github.com/aaa147258qq/image-gen-mcp",
+    "source": "github"
+  },
+  "homepage": "https://github.com/aaa147258qq/image-gen-mcp",
+  "license": "MIT",
+  "packages": [
+    {
+      "name": "@aaa147258qq/image-gen-mcp",
+      "registry": "npm",
+      "version": "1.0.0",
+      "runtime": "node",
+      "tool": {
+        "type": "binary",
+        "command": "npx",
+        "args": ["-y", "@aaa147258qq/image-gen-mcp"]
+      }
+    }
+  ]
+}

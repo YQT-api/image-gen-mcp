@@ -1,0 +1,19 @@
+# 依赖（体积大，且不含密钥，无需入库）
+node_modules/
+
+# 构建产物（npm publish 由 files 字段重新打包，GitHub 源仓库无需提交）
+dist/
+
+# 密钥 / 本地配置：绝对不能提交！
+.env
+.env.*
+*.local
+
+# 日志
+*.log
+
+# 系统/编辑器文件
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

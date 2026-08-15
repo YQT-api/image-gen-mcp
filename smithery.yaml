@@ -1,0 +1,49 @@
+# Smithery 配置文件（smithery.ai）
+# 用途：Smithery 从 GitHub 自动发现此文件后，可一键列出并安装本服务。
+# 提交到 GitHub 仓库根目录后，去 smithery.ai → Publish MCP 关联仓库即可。
+version: 1.0.0
+name: image-gen-mcp
+displayName: Image Gen MCP
+description: >-
+  基于 shiwuyan 图片接口封装的 MCP 服务，提供文生图（generate_image）与
+  图生图（edit_image）能力，通过 npx 一键启动，无需下载代码或写路径。
+authors:
+  - aaa147258qq
+homepage: https://github.com/aaa147258qq/image-gen-mcp
+repository: https://github.com/aaa147258qq/image-gen-mcp
+license: MIT
+# 运行环境：使用 npx 拉取已发布的 npm 包
+runtime: node
+startCommand:
+  type: stdio
+  # 声明运行所需的环境变量（仅声明"需要哪些"，不含任何真实值）
+  configSchema:
+    type: object
+    properties:
+      IMAGE_API_KEY:
+        type: string
+        title: API Key
+        description: 你的 shiwuyan 图片接口密钥（必填，用户各自填写自己的）
+      IMAGE_API_BASE_URL:
+        type: string
+        title: API Base URL
+        description: 接口地址，默认 https://aiapi.shiwuyan.cn/v1
+        default: https://aiapi.shiwuyan.cn/v1
+      IMAGE_API_MODEL:
+        type: string
+        title: 默认模型
+        description: 文生图默认模型，默认 gpt-image-2-code
+        default: gpt-image-2-code
+    required:
+      - IMAGE_API_KEY
+  # Smithery 据此拼出启动命令并注入环境变量
+  commandFunction: |
+    ({ config }) => ({
+      command: 'npx',
+      args: ['-y', '@aaa147258qq/image-gen-mcp'],
+      env: {
+        IMAGE_API_KEY: config.IMAGE_API_KEY,
+        IMAGE_API_BASE_URL: config.IMAGE_API_BASE_URL,
+        IMAGE_API_MODEL: config.IMAGE_API_MODEL
+      }
+    })

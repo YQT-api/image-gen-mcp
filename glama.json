@@ -1,0 +1,24 @@
+{
+  "$schema": "https://glama.ai/schemas/mcp-server.json",
+  "name": "Image Gen MCP",
+  "description": "基于 shiwuyan 图片接口封装的 MCP 服务，提供文生图（generate_image）与图生图（edit_image）工具，通过 npx 一键启动。",
+  "homepage": "https://github.com/aaa147258qq/image-gen-mcp",
+  "repository": "https://github.com/aaa147258qq/image-gen-mcp",
+  "license": "MIT",
+  "categories": ["images", "design", "ai"],
+  "tags": ["image-generation", "image-editing", "mcp", "npx", "shiwuyan"],
+  "tools": [
+    {
+      "name": "generate_image",
+      "description": "根据文本提示词生成图片，支持尺寸/质量/风格/背景/格式/高清放大等参数，直接返回图片。"
+    },
+    {
+      "name": "edit_image",
+      "description": "基于一张本地参考图进行重绘/编辑，默认使用稳定的 gpt-image-2-code 模型，直接返回图片。"
+    },
+    {
+      "name": "list_models",
+      "description": "列出当前接口可用的图片模型 ID，便于选择生成/编辑所用模型。"
+    }
+  ]
+}

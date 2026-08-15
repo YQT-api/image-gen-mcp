@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "image-gen": {
+      "command": "node",
+      "args": ["C:/Users/a1/WorkBuddy/2026-08-15-14-27-29/image-gen-mcp/dist/index.js"],
+      "env": {
+        "IMAGE_API_KEY": "sk-在此替换为你的Key",
+        "IMAGE_API_BASE_URL": "https://aiapi.shiwuyan.cn/v1",
+        "IMAGE_API_MODEL": "gpt-image-2-code"
+      }
+    }
+  }
+}

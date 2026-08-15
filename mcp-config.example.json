@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "image-gen": {
+      "command": "node",
+      "args": ["/绝对路径/image-gen-mcp/dist/index.js"],
+      "env": {
+        "IMAGE_API_KEY": "sk-你的key",
+        "IMAGE_API_BASE_URL": "https://aiapi.shiwuyan.cn/v1",
+        "IMAGE_API_MODEL": "gpt-image-2-code"
+      }
+    }
+  }
+}
