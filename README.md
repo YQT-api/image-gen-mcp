@@ -57,42 +57,19 @@ Cursor 等任意 MCP 客户端都能直接「生成图片」。
 
 ---
 
-## 三、安装与构建
+## 三、快速开始（npx 零路径，推荐给最终用户）
 
-```bash
-cd image-gen-mcp
-npm install
-npm run build          # 编译到 dist/
-```
+无需下载代码、无需编译。只要本机有 **Node.js 18+**，并把配置里的 `IMAGE_API_KEY` 换成你自己的 Key 即可。
 
-环境变量（也可在客户端 mcp 配置的 `env` 里直接给）：
-- `IMAGE_API_KEY`：**必填**，你的 API Key
-- `IMAGE_API_BASE_URL`：默认 `https://aiapi.shiwuyan.cn/v1`
-- `IMAGE_API_MODEL`：默认图片模型 `gpt-image-2-code`
-
----
-
-## 四、WorkBuddy 用户如何调用（两种接入方式）
-
-### 方式 A：图形化「自定义 MCP」（最接近一键导入）
-1. WorkBuddy 左侧「连接器」→ 右上角「自定义 MCP」/「MCP 服务器」→「配置 MCP」
-2. 粘贴下面的配置（把 Key 换成你自己的），保存
-3. 在连接器列表找到该条目 → 点「**信任 / 启用**」
-4. **完全退出并重启 WorkBuddy**（MCP 进程需重载），出现绿点即生效
-5. 对话里直接说「帮我生成一张……的图片」
-
-### 方式 B：直接编辑配置文件
-编辑 `~/.workbuddy/mcp.json`（没有就新建），写入下方配置，保存后按方式 A 第 3-4 步信任并重启。
-
-### 配置片段（复制即用）
+### 配置（复制即用）
 ```json
 {
   "mcpServers": {
     "image-gen": {
-      "command": "node",
-      "args": ["/绝对路径/image-gen-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "@aaa147258qq/image-gen-mcp"],
       "env": {
-        "IMAGE_API_KEY": "sk-你的key",
+        "IMAGE_API_KEY": "sk-在此替换为你的Key",
         "IMAGE_API_BASE_URL": "https://aiapi.shiwuyan.cn/v1",
         "IMAGE_API_MODEL": "gpt-image-2-code"
       }
@@ -100,5 +77,45 @@ npm run build          # 编译到 dist/
   }
 }
 ```
-> - Windows 路径用 `/` 或双反斜 `\\`，**不要把 Key 写进 `args`，统一放 `env`**。
-> - Key 走环境变量，本项目源码不硬编码任何 Key。
+
+### 在 WorkBuddy 中启用
+1. 左侧「连接器」→ 右上角「自定义 MCP」/「MCP 服务器」→「配置 MCP」
+2. 粘贴上面的配置，把 `IMAGE_API_KEY` 换成你自己的 Key，保存
+3. 在连接器列表找到该条目 → 点「**信任 / 启用**」
+4. **完全退出并重启 WorkBuddy**（MCP 进程需重载），出现绿点即生效
+5. 对话里直接说「帮我生成一张……的图片」
+
+> 也可直接导入仓库里的 `workbuddy-import-npx.json`（已填好除 Key 外的全部内容，导入后只补 Key 即可）。Key 走环境变量，本项目源码不硬编码任何 Key。
+
+---
+
+## 四、从源码运行（开发者 / 自托管，可选）
+
+```bash
+cd image-gen-mcp
+npm install
+npm run build          # 编译到 dist/
+```
+
+本地路径配置（把 `args` 指向你机器上的 `dist/index.js`）：
+```json
+{
+  "mcpServers": {
+    "image-gen": {
+      "command": "node",
+      "args": ["/绝对路径/image-gen-mcp/dist/index.js"],
+      "env": {
+        "IMAGE_API_KEY": "sk-在此替换为你的Key",
+        "IMAGE_API_BASE_URL": "https://aiapi.shiwuyan.cn/v1",
+        "IMAGE_API_MODEL": "gpt-image-2-code"
+      }
+    }
+  }
+}
+```
+> Windows 路径用 `/` 或双反斜 `\\`，**不要把 Key 写进 `args`，统一放 `env`**。
+
+环境变量：
+- `IMAGE_API_KEY`：**必填**，你的 API Key
+- `IMAGE_API_BASE_URL`：默认 `https://aiapi.shiwuyan.cn/v1`
+- `IMAGE_API_MODEL`：默认图片模型 `gpt-image-2-code`
